@@ -4,10 +4,11 @@
 #include <vector>
 
 using namespace std;
+
+string PATH = "../tracex_4kb/";
 vector<string> GetFileList(){
     struct dirent *ptr;
     DIR *dir;
-    string PATH = "./";
     dir=opendir(PATH.c_str());
     vector <string> files;
     cout << "file list: "<< endl;
@@ -18,7 +19,7 @@ vector<string> GetFileList(){
         if(ptr->d_name[0]=='.' || ptr->d_name[10] == '.' || ptr->d_name[19] == '.')
             continue;
         //cout << ptr->d_name << endl;
-        files.push_back(ptr->d_name);
+        files.push_back(PATH+ptr->d_name);
     }
 
     for (int i = 0; i < files.size(); ++i)
