@@ -19,7 +19,7 @@ vector<string> GetFileList(){
         if(ptr->d_name[0]=='.' || ptr->d_name[10] == '.' || ptr->d_name[19] == '.')
             continue;
         //cout << ptr->d_name << endl;
-        files.push_back(PATH+ptr->d_name);
+        files.push_back(ptr->d_name);
     }
 
     for (int i = 0; i < files.size(); ++i)
@@ -36,10 +36,10 @@ int main(int argc, char* argv[]) {
 
     vector<string> files = GetFileList();
     for(auto n:files){
-        in.open(n);
+        in.open(PATH+n);
         if(in.fail()) cerr<<"open in file fail"<<endl;
 
-        string outfile = "new_"+n;
+        string outfile = PATH+"new_"+n;
         out.open(outfile,ios::out);
         if(out.fail()) cerr<<"open out file fail"<<endl;
         cout<<"reading from "<<n<<endl;
